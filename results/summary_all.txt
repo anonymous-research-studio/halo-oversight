@@ -1,0 +1,155 @@
+HALO evaluation suite
+
+==============================================================================
+  Table 2: Scenario conformance (20 scenarios x 4 labels = 80 cases)
+==============================================================================
+
+Method                      Matched   False permits   False holds   Unencoded released
+--------------------------------------------------------------------------------------
+HALO gate                   80/80           0/52          0/28                 4/4    
+Static contract checker     80/80           0/52          0/28                 4/4    
+Ordinal-only control        32/80          48/52          0/28                 4/4    
+
+==============================================================================
+  Randomized suite: 20,000 sequences vs. oracle
+==============================================================================
+Release attempts: 119,834
+Oracle permits:   1,372
+Disagreements:    0
+
+==============================================================================
+  Mutation testing: 16 mutants (14 live, 2 equivalent)
+==============================================================================
+
+Mutant                              Live  Scenario  Randomized  Either
+----------------------------------------------------------------------
+M01_SkipUnknownCase                  yes       yes          no     yes
+M02_SkipAlreadyReleased              yes       yes         yes     yes
+M03_SkipHashCheck                    yes       yes         yes     yes
+M04_SkipRuleRevCheck                 yes       yes         yes     yes
+M05_SkipObsRevCheck                  yes       yes         yes     yes
+M06_SkipWindowCheck                  yes       yes         yes     yes
+M07_SkipFloorCheck                   yes       yes         yes     yes
+M08_SkipRejectionCheck               yes        no         yes     yes
+M09_SkipRoleCoverage                 yes       yes         yes     yes
+M10_SkipDistinctCount                yes        no         yes     yes
+M11_SkipRegistryCheck                yes       yes         yes     yes
+M12_SkipReceiptHashCheck              eq        no           –       –
+M13_SkipReceiptRevisionCheck          eq        no           –       –
+M14_SkipReceiptTimeCheck             yes       yes         yes     yes
+M15_WeakenWindowExclDeadline         yes        no          no      no
+M16_SkipCurrentRoleCheck             yes       yes         yes     yes
+
+Scenario suite detects:   11/14 live mutants
+Randomized suite detects: 12/14 live mutants
+Either suite detects:     13/14 live mutants
+Survive both suites:      M15_WeakenWindowExclDeadline
+
+Q-learner parameters: 903
+
+==============================================================================
+  Tuning: configuration chosen on validation seeds (baseline, coverage 1.0)
+==============================================================================
+
+  Min. obligation             (no parameters)                               val. cost  123.4  (1 config)
+  Static gates (B2)           threshold=0.9                                 val. cost   57.4  (8 configs)
+  Conf. threshold (B3)        threshold=0.6                                 val. cost   67.0  (8 configs)
+  Risk matrix (B4)            (no parameters)                               val. cost   93.7  (1 config)
+  Cap.-aware threshold†       base_threshold=0.6, queue_sensitivity=0.03    val. cost   72.3  (8 configs)
+  Two-threshold (post hoc)    monitor_threshold=0.6, approval_threshold=0.5 val. cost   74.3  (8 configs)
+  LinUCB bandit (B5)          alpha=0.01                                    val. cost   55.0  (8 configs)
+  Ref. linear Q-learner       lr=0.01, epsilon=0.05                         val. cost   57.4  (8 configs)
+
+==============================================================================
+  Table 3: Matched-policy comparison, 5 test seeds, full rule coverage
+==============================================================================
+
+Cost, harm, effort, withheld per 1,000 arrivals; cost as mean ± sample s.d.
+
+  Baseline: 1.0 arrivals/min, 4 generalists + 2 specialists
+  Policy                              Cost    Harm  Effort  With.  Block%  Any%  Prec%  Crit%
+  -------------------------------------------------------------------------------------------
+  Min. obligation               122.7±16.8   110.8     592    0.0      12    12      –     74
+  Static gates (B2)               56.7±9.7    39.4     866    0.0      17    17     50     91
+  Conf. threshold (B3)            72.8±8.0    50.0    1140    0.0      23    23     22     88
+  Risk matrix (B4)               92.6±15.1    76.8     789    0.0      12    49      8     82
+  Cap.-aware threshold†           75.4±9.8    55.5     992    0.0      20    20     27     87
+  Two-threshold (post hoc)        75.9±9.7    59.9     802    0.0      14    23     22     86
+  LinUCB bandit (B5)              56.3±7.9    22.5    1670    0.3      16    17     51     94
+  Ref. linear Q-learner           59.1±5.9    35.0    1205    0.0      16    16     57     92
+
+  Capacity stress (held out): 1.6 arrivals/min, 2 generalists + 1 specialist
+  Policy                              Cost    Harm  Effort  With.  Block%  Any%  Prec%  Crit%
+  -------------------------------------------------------------------------------------------
+  Min. obligation               130.9±19.2   112.0     568    7.5      12    12      –     70
+  Static gates (B2)               66.0±9.2    41.7     842    7.5      18    18     48     86
+  Conf. threshold (B3)            80.6±9.6    51.1    1104    7.5      23    23     21     84
+  Risk matrix (B4)              103.9±13.4    81.1     765    7.5      12    49      7     77
+  Cap.-aware threshold†           86.5±9.0    61.2     888    7.5      19    19     30     81
+  Two-threshold (post hoc)       86.9±10.6    64.0     771    7.5      15    23     21     81
+  LinUCB bandit (B5)              96.9±7.6    13.2     988   64.0      16    17     51     53
+  Ref. linear Q-learner           82.9±9.5    25.7     919   38.8      16    16     58     67
+
+  Obligated cases by enforced level (%, pooled over test seeds): level 5 / 6 / 7
+    [baseline] Min. obligation               100     0     0
+    [baseline] Static gates (B2)             100     0     0
+    [baseline] Conf. threshold (B3)          100     0     0
+    [baseline] Risk matrix (B4)              100     0     0
+    [baseline] Cap.-aware threshold†         100     0     0
+    [baseline] Two-threshold (post hoc)      100     0     0
+    [baseline] LinUCB bandit (B5)             13     0    86
+    [baseline] Ref. linear Q-learner          20    75     5
+    [stress] Min. obligation               100     0     0
+    [stress] Static gates (B2)             100     0     0
+    [stress] Conf. threshold (B3)          100     0     0
+    [stress] Risk matrix (B4)              100     0     0
+    [stress] Cap.-aware threshold†         100     0     0
+    [stress] Two-threshold (post hoc)      100     0     0
+    [stress] LinUCB bandit (B5)             13     1    86
+    [stress] Ref. linear Q-learner          20    75     5
+
+==============================================================================
+  Table 4: Harm per 1,000 arrivals as rule coverage falls (baseline)
+==============================================================================
+
+  Policy                        Cov. 1.0   Cov. 0.5   Cov. 0.0  Unencoded haz. released %
+  ---------------------------------------------------------------------------------------
+  Min. obligation                  110.8      214.6      419.7                         28
+  Static gates (B2)                 39.4       40.4       42.4                         12
+  Conf. threshold (B3)              50.0       54.6       56.2                         13
+  Risk matrix (B4)                  76.8      113.6      168.6                         20
+  Cap.-aware threshold†             55.5       63.0       66.3                         14
+  Two-threshold (post hoc)          59.9       68.4       71.7                         16
+  LinUCB bandit (B5)                22.5       26.9       33.7                          6
+  Ref. linear Q-learner             35.0       45.5       64.0                         11
+
+  Unencoded = hazard types no rule was written for (simulator.UNENCODED_HAZARDS), at coverage 1.0.
+
+==============================================================================
+  Decision rule vs. best protocol-specified non-learning policy
+==============================================================================
+
+  [baseline] LinUCB bandit (B5) vs Static gates (B2): 56.3 vs 56.7 (+0.8% lower); per-seed diff [-4.8, +13.9, -5.7, +1.0, -6.7] -> does not pass
+  [baseline] Ref. linear Q-learner vs Static gates (B2): 59.1 vs 56.7 (-4.1% lower); per-seed diff [+3.5, +10.7, +0.7, +1.0, -4.3] -> does not pass
+  [stress] LinUCB bandit (B5) vs Static gates (B2): 96.9 vs 66.0 (-46.8% lower); per-seed diff [+25.1, +34.3, +33.4, +30.8, +30.8] -> does not pass
+  [stress] Ref. linear Q-learner vs Static gates (B2): 82.9 vs 66.0 (-25.6% lower); per-seed diff [+18.4, +21.9, +20.2, +7.3, +16.8] -> does not pass
+
+==============================================================================
+  Decision rule incl. post hoc comparator (for reference)
+==============================================================================
+
+  [baseline] LinUCB bandit (B5) vs Static gates (B2): 56.3 vs 56.7 (+0.8% lower); per-seed diff [-4.8, +13.9, -5.7, +1.0, -6.7] -> does not pass
+  [baseline] Ref. linear Q-learner vs Static gates (B2): 59.1 vs 56.7 (-4.1% lower); per-seed diff [+3.5, +10.7, +0.7, +1.0, -4.3] -> does not pass
+  [stress] LinUCB bandit (B5) vs Static gates (B2): 96.9 vs 66.0 (-46.8% lower); per-seed diff [+25.1, +34.3, +33.4, +30.8, +30.8] -> does not pass
+  [stress] Ref. linear Q-learner vs Static gates (B2): 82.9 vs 66.0 (-25.6% lower); per-seed diff [+18.4, +21.9, +20.2, +7.3, +16.8] -> does not pass
+
+Gate holds on simulated releases (should be 0): 0
+
+==============================================================================
+  Adapter release latency (deterministic stub agent)
+==============================================================================
+
+Median 1.4 µs, 95th percentile 1.5 µs over 20,000 releases
+Platform: CPython 3.13.7, arm64
+
+Completed in 120 s

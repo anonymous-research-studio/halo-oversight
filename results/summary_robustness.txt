@@ -1,0 +1,74 @@
+HALO evaluation suite
+
+==============================================================================
+  Post hoc robustness analysis (50 fresh test seeds, 1000-1049; not preregistered)
+==============================================================================
+
+  Baseline: 1.0 arrivals/min, 4 generalists + 2 specialists
+  Policy (protocol-tuned)        Cost    Harm  Effort  With.
+  ----------------------------------------------------------
+  Min. obligation               127.7   115.7     600    0.0
+  Static gates (B2)              63.6    46.3     867    0.0
+  Conf. threshold (B3)           77.3    54.4    1145    0.0
+  Risk matrix (B4)               99.1    83.2     796    0.0
+  Cap.-aware threshold†          81.5    61.8     985    0.0
+  Two-threshold (post hoc)       84.1    68.0     804    0.0
+  LinUCB bandit (B5)             53.0    18.9    1681    0.5
+  Ref. linear Q-learner          54.5    30.1    1219    0.0
+
+  Strongest baselines (tuned on these test seeds):
+    Static gates (B2)          threshold=0.9                                  cost   63.6  (21 configs)
+    Conf. threshold (B3)       threshold=0.6                                  cost   77.3  (16 configs)
+    Cap.-aware threshold†      base_threshold=0.6, queue_sensitivity=0.0      cost   77.3  (48 configs)
+    Two-threshold (post hoc)   monitor_threshold=0.7, approval_threshold=0.6  cost   76.0  (22 configs)
+  The strongest baseline is the protocol-tuned Static gates (B2) itself, so learners are compared with it once.
+
+  Learner                      Credit    vs             Cost diff [95% CI]  % lower    Wins
+  -----------------------------------------------------------------------------------------
+  LinUCB bandit                enforced  protocol      -10.7 [-12.8, -8.5]    +16.8   44/50
+  Q-learner, seed 0 (protocol) enforced  protocol       -9.2 [-11.3, -7.1]    +14.4   46/50
+  Q-learner, seed 1            enforced  protocol        +3.1 [+1.9, +4.2]     -4.8   15/50
+  Q-learner, seed 2            enforced  protocol        -0.3 [-2.1, +1.5]     +0.5   25/50
+  Q-learner, seed 3            enforced  protocol     +21.8 [+19.8, +23.8]    -34.2    0/50
+  Q-learner, seed 4            enforced  protocol        -3.1 [-4.7, -1.5]     +4.8   36/50
+  LinUCB bandit                proposed  protocol     -12.2 [-14.2, -10.3]    +19.2   46/50
+  Q-learner, seed 0            proposed  protocol        -3.7 [-5.6, -1.7]     +5.7   36/50
+  Credit: 'enforced' = learner credited with the action after the rule floor
+  (as in the protocol); 'proposed' = credited with its own proposal.
+
+  Breakeven effort weight, bandit vs strongest baseline: 0.033 per reviewer minute (declared 0.02)
+
+  Capacity stress (held out): 1.6 arrivals/min, 2 generalists + 1 specialist
+  Policy (protocol-tuned)        Cost    Harm  Effort  With.
+  ----------------------------------------------------------
+  Min. obligation               131.4   114.0     566    6.1
+  Static gates (B2)              66.1    43.4     832    6.1
+  Conf. threshold (B3)           80.8    52.5    1112    6.1
+  Risk matrix (B4)              101.9    80.5     762    6.1
+  Cap.-aware threshold†          86.0    62.2     885    6.1
+  Two-threshold (post hoc)       86.5    64.9     771    6.1
+  LinUCB bandit (B5)             96.0    14.0     991   62.2
+  Ref. linear Q-learner          81.4    25.2     931   37.5
+
+  Strongest baselines (tuned on these test seeds):
+    Static gates (B2)          threshold=0.9                                  cost   66.1  (21 configs)
+    Conf. threshold (B3)       threshold=0.6                                  cost   80.8  (16 configs)
+    Cap.-aware threshold†      base_threshold=0.6, queue_sensitivity=0.0      cost   80.8  (48 configs)
+    Two-threshold (post hoc)   monitor_threshold=0.7, approval_threshold=0.6  cost   79.3  (22 configs)
+  The strongest baseline is the protocol-tuned Static gates (B2) itself, so learners are compared with it once.
+
+  Learner                      Credit    vs             Cost diff [95% CI]  % lower    Wins
+  -----------------------------------------------------------------------------------------
+  LinUCB bandit                enforced  protocol     +29.9 [+28.1, +31.6]    -45.2    0/50
+  Q-learner, seed 0 (protocol) enforced  protocol     +15.2 [+13.5, +16.9]    -23.0    0/50
+  Q-learner, seed 1            enforced  protocol        +6.5 [+5.2, +7.8]     -9.8    4/50
+  Q-learner, seed 2            enforced  protocol     +21.3 [+19.5, +23.0]    -32.1    0/50
+  Q-learner, seed 3            enforced  protocol     +35.9 [+34.3, +37.5]    -54.3    0/50
+  Q-learner, seed 4            enforced  protocol     +15.2 [+13.7, +16.8]    -23.0    0/50
+  LinUCB bandit                proposed  protocol     +12.7 [+11.1, +14.3]    -19.1    2/50
+  Q-learner, seed 0            proposed  protocol     +19.4 [+17.9, +20.8]    -29.3    0/50
+  Credit: 'enforced' = learner credited with the action after the rule floor
+  (as in the protocol); 'proposed' = credited with its own proposal.
+
+
+Completed in 225 s

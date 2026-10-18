@@ -1,0 +1,17 @@
+mutant,live,scenario,randomized,either
+M01_SkipUnknownCase,True,True,False,True
+M02_SkipAlreadyReleased,True,True,True,True
+M03_SkipHashCheck,True,True,True,True
+M04_SkipRuleRevCheck,True,True,True,True
+M05_SkipObsRevCheck,True,True,True,True
+M06_SkipWindowCheck,True,True,True,True
+M07_SkipFloorCheck,True,True,True,True
+M08_SkipRejectionCheck,True,False,True,True
+M09_SkipRoleCoverage,True,True,True,True
+M10_SkipDistinctCount,True,False,True,True
+M11_SkipRegistryCheck,True,True,True,True
+M12_SkipReceiptHashCheck,False,False,False,False
+M13_SkipReceiptRevisionCheck,False,False,False,False
+M14_SkipReceiptTimeCheck,True,True,True,True
+M15_WeakenWindowExclDeadline,True,False,False,False
+M16_SkipCurrentRoleCheck,True,True,True,True

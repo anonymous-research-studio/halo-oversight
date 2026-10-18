@@ -1,0 +1,4 @@
+method,matched,total,false_permits,expected_holds,false_holds,expected_permits,unencoded_released,unencoded_total,hold_reason_mismatches
+HALO gate,80,80,0,52,0,28,4,4,0
+Static contract checker,80,80,0,52,0,28,4,4,0
+Ordinal-only control,32,80,48,52,0,28,4,4,0

@@ -1,0 +1,51 @@
+policy,params,validation_cost,chosen
+Min. obligation,{},123.38185195731388,True
+Static gates (B2),{'threshold': 0.5},102.68816781792077,False
+Static gates (B2),{'threshold': 0.6},84.938402062154,False
+Static gates (B2),{'threshold': 0.7},69.66226057659772,False
+Static gates (B2),{'threshold': 0.8},59.817857504874354,False
+Static gates (B2),{'threshold': 0.9},57.39699599374702,True
+Static gates (B2),{'threshold': 1.0},62.55727243253355,False
+Static gates (B2),{'threshold': 1.1},75.532077252891,False
+Static gates (B2),{'threshold': 1.2},93.23195025473217,False
+Conf. threshold (B3),{'threshold': 0.3},114.03636588323621,False
+Conf. threshold (B3),{'threshold': 0.4},106.07744906142183,False
+Conf. threshold (B3),{'threshold': 0.5},90.59521660846319,False
+Conf. threshold (B3),{'threshold': 0.6},67.02150644272923,True
+Conf. threshold (B3),{'threshold': 0.7},82.78152142752533,False
+Conf. threshold (B3),{'threshold': 0.8},107.99532285963001,False
+Conf. threshold (B3),{'threshold': 0.85},121.4301256714317,False
+Conf. threshold (B3),{'threshold': 0.9},145.04957939938342,False
+Risk matrix (B4),{},93.67281233607106,True
+Cap.-aware threshold†,"{'base_threshold': 0.5, 'queue_sensitivity': 0.03}",93.71229010964322,False
+Cap.-aware threshold†,"{'base_threshold': 0.5, 'queue_sensitivity': 0.05}",97.27023436659857,False
+Cap.-aware threshold†,"{'base_threshold': 0.6, 'queue_sensitivity': 0.03}",72.25147512270848,True
+Cap.-aware threshold†,"{'base_threshold': 0.6, 'queue_sensitivity': 0.05}",75.08272580584618,False
+Cap.-aware threshold†,"{'base_threshold': 0.7, 'queue_sensitivity': 0.03}",75.08817285584605,False
+Cap.-aware threshold†,"{'base_threshold': 0.7, 'queue_sensitivity': 0.05}",74.92544931651504,False
+Cap.-aware threshold†,"{'base_threshold': 0.8, 'queue_sensitivity': 0.03}",89.48216019125157,False
+Cap.-aware threshold†,"{'base_threshold': 0.8, 'queue_sensitivity': 0.05}",83.7681221998933,False
+Two-threshold (post hoc),"{'monitor_threshold': 0.6, 'approval_threshold': 0.3}",83.86875365476949,False
+Two-threshold (post hoc),"{'monitor_threshold': 0.6, 'approval_threshold': 0.4}",81.60069033631679,False
+Two-threshold (post hoc),"{'monitor_threshold': 0.6, 'approval_threshold': 0.5}",74.27063835143211,True
+Two-threshold (post hoc),"{'monitor_threshold': 0.7, 'approval_threshold': 0.3}",85.04381455771895,False
+Two-threshold (post hoc),"{'monitor_threshold': 0.7, 'approval_threshold': 0.4}",82.77575123926623,False
+Two-threshold (post hoc),"{'monitor_threshold': 0.7, 'approval_threshold': 0.5}",75.44569925438155,False
+Two-threshold (post hoc),"{'monitor_threshold': 0.8, 'approval_threshold': 0.3}",88.63413685485413,False
+Two-threshold (post hoc),"{'monitor_threshold': 0.8, 'approval_threshold': 0.4}",86.36607353640142,False
+LinUCB bandit (B5),{'alpha': 0.01},54.989973343642895,True
+LinUCB bandit (B5),{'alpha': 0.05},69.40644450821775,False
+LinUCB bandit (B5),{'alpha': 0.1},61.64354384364706,False
+LinUCB bandit (B5),{'alpha': 0.5},79.02699119448933,False
+LinUCB bandit (B5),{'alpha': 1.0},74.61429446392093,False
+LinUCB bandit (B5),{'alpha': 2.0},71.65016315519416,False
+LinUCB bandit (B5),{'alpha': 3.0},79.5393335395355,False
+LinUCB bandit (B5),{'alpha': 5.0},83.24190921741342,False
+Ref. linear Q-learner,"{'lr': 0.001, 'epsilon': 0.05}",72.89003584368078,False
+Ref. linear Q-learner,"{'lr': 0.001, 'epsilon': 0.1}",67.02307712203724,False
+Ref. linear Q-learner,"{'lr': 0.005, 'epsilon': 0.05}",77.84811313300581,False
+Ref. linear Q-learner,"{'lr': 0.005, 'epsilon': 0.1}",75.31162594545845,False
+Ref. linear Q-learner,"{'lr': 0.01, 'epsilon': 0.05}",57.448623214671464,True
+Ref. linear Q-learner,"{'lr': 0.01, 'epsilon': 0.1}",89.38955845340986,False
+Ref. linear Q-learner,"{'lr': 0.05, 'epsilon': 0.05}",70.92933817178101,False
+Ref. linear Q-learner,"{'lr': 0.05, 'epsilon': 0.1}",70.12070162038748,False

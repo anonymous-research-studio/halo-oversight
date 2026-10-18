@@ -1,0 +1,9 @@
+comparators,condition,learner,best_non_learner,learner_cost,best_cost,pct_lower,lower_on_every_seed,passes,per_seed_diff
+protocol,baseline,LinUCB bandit (B5),Static gates (B2),56.28121075764891,56.74282353034918,0.813517452922262,False,False,-4.78 13.86 -5.67 0.98 -6.70
+protocol,baseline,Ref. linear Q-learner,Static gates (B2),59.05564736674845,56.74282353034918,-4.075975942864828,False,False,3.46 10.72 0.67 0.96 -4.26
+protocol,stress,LinUCB bandit (B5),Static gates (B2),96.89877493776157,66.02582705707627,-46.75889611196701,False,False,25.12 34.28 33.36 30.80 30.80
+protocol,stress,Ref. linear Q-learner,Static gates (B2),82.94674842397333,66.02582705707627,-25.62773102754125,False,False,18.35 21.93 20.19 7.34 16.79
+incl_post_hoc,baseline,LinUCB bandit (B5),Static gates (B2),56.28121075764891,56.74282353034918,0.813517452922262,False,False,-4.78 13.86 -5.67 0.98 -6.70
+incl_post_hoc,baseline,Ref. linear Q-learner,Static gates (B2),59.05564736674845,56.74282353034918,-4.075975942864828,False,False,3.46 10.72 0.67 0.96 -4.26
+incl_post_hoc,stress,LinUCB bandit (B5),Static gates (B2),96.89877493776157,66.02582705707627,-46.75889611196701,False,False,25.12 34.28 33.36 30.80 30.80
+incl_post_hoc,stress,Ref. linear Q-learner,Static gates (B2),82.94674842397333,66.02582705707627,-25.62773102754125,False,False,18.35 21.93 20.19 7.34 16.79

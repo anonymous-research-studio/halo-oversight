@@ -1,0 +1,25 @@
+condition,analysis,policy,params,cost,harm,effort,withheld
+baseline,protocol-tuned,Min. obligation,{},127.70695276480481,115.71030828031878,599.8322242243016,0.0
+baseline,protocol-tuned,Static gates (B2),{'threshold': 0.9},63.6383064563947,46.302855509610524,866.7725473392084,0.0
+baseline,protocol-tuned,Conf. threshold (B3),{'threshold': 0.6},77.32766548632517,54.422300431042935,1145.2682527641125,0.0
+baseline,protocol-tuned,Risk matrix (B4),{},99.14499377571255,83.22523356692703,795.9880104392765,0.0
+baseline,protocol-tuned,Cap.-aware threshold†,"{'base_threshold': 0.6, 'queue_sensitivity': 0.03}",81.49413062415138,61.79668429521536,984.8723164468015,0.0
+baseline,protocol-tuned,Two-threshold (post hoc),"{'monitor_threshold': 0.6, 'approval_threshold': 0.5}",84.06361674313628,67.9793570689364,804.2129837099935,0.0
+baseline,protocol-tuned,LinUCB bandit (B5),{'alpha': 0.01},52.954553096936955,18.886345967256037,1680.546412980503,0.45727887007085516
+baseline,protocol-tuned,Ref. linear Q-learner,"{'lr': 0.01, 'epsilon': 0.05}",54.45829619306051,30.07930750481679,1218.9494344121863,0.0
+baseline,strongest (tuned on test seeds),Static gates (B2),{'threshold': np.float64(0.9)},63.6383064563947,46.302855509610524,866.7725473392084,0.0
+baseline,strongest (tuned on test seeds),Conf. threshold (B3),{'threshold': np.float64(0.6)},77.32766548632517,54.422300431042935,1145.2682527641125,0.0
+baseline,strongest (tuned on test seeds),Cap.-aware threshold†,"{'base_threshold': np.float64(0.6), 'queue_sensitivity': 0.0}",77.32766548632517,54.422300431042935,1145.2682527641125,0.0
+baseline,strongest (tuned on test seeds),Two-threshold (post hoc),"{'monitor_threshold': np.float64(0.7), 'approval_threshold': np.float64(0.6)}",75.96637020826371,48.998375691094125,1348.3997258584798,0.0
+stress,protocol-tuned,Min. obligation,{},131.39612186679088,113.99095428381737,565.5943081926612,6.093281419120275
+stress,protocol-tuned,Static gates (B2),{'threshold': 0.9},66.14271818195695,43.40155942050805,832.3938671164312,6.093281419120275
+stress,protocol-tuned,Conf. threshold (B3),{'threshold': 0.6},80.82016347998766,52.48898710419653,1111.894747833543,6.093281419120275
+stress,protocol-tuned,Risk matrix (B4),{},101.87695384266293,80.53613014954139,762.3771137000641,6.093281419120275
+stress,protocol-tuned,Cap.-aware threshold†,"{'base_threshold': 0.6, 'queue_sensitivity': 0.03}",86.03870651268427,62.246859304073354,884.9282894745324,6.093281419120275
+stress,protocol-tuned,Two-threshold (post hoc),"{'monitor_threshold': 0.6, 'approval_threshold': 0.5}",86.45739335589796,64.93963837199199,771.2236782392845,6.093281419120275
+stress,protocol-tuned,LinUCB bandit (B5),{'alpha': 0.01},96.02586483024172,14.02315547188585,990.6360488569569,62.18998838121673
+stress,protocol-tuned,Ref. linear Q-learner,"{'lr': 0.01, 'epsilon': 0.05}",81.3512864616214,25.210667781958968,930.5751046763737,37.529116586134954
+stress,strongest (tuned on test seeds),Static gates (B2),{'threshold': np.float64(0.9)},66.14271818195695,43.40155942050805,832.3938671164312,6.093281419120275
+stress,strongest (tuned on test seeds),Conf. threshold (B3),{'threshold': np.float64(0.6)},80.82016347998766,52.48898710419653,1111.894747833543,6.093281419120275
+stress,strongest (tuned on test seeds),Cap.-aware threshold†,"{'base_threshold': np.float64(0.6), 'queue_sensitivity': 0.0}",80.82016347998766,52.48898710419653,1111.894747833543,6.093281419120275
+stress,strongest (tuned on test seeds),Two-threshold (post hoc),"{'monitor_threshold': np.float64(0.7), 'approval_threshold': np.float64(0.6)}",79.30058457553336,46.888939938710635,1315.9181608851227,6.093281419120275

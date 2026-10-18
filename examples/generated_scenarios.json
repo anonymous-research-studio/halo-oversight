@@ -1,0 +1,60 @@
+{
+  "description": "Example of an externally generated scenario file. Each entry follows the schema in halo/scenarios.py. 'expected' is optional.",
+  "scenarios": [
+    {
+      "name": "qualified_rejection_then_approval",
+      "expected": {"permit": false, "reason": "qualified_rejection"},
+      "reviewers": {"pharm1": ["pharmacist"], "pharm2": ["pharmacist"]},
+      "contract": {"output": "Increase dose to 20 mg", "rule_revision": "v1", "obs_revision": "o1",
+                   "required_roles": ["pharmacist"], "min_reviewers": 1, "floor": 5,
+                   "window_start": 0, "deadline": 100},
+      "events": [
+        {"type": "review", "reviewer": "pharm1", "decision": "reject", "time": 10},
+        {"type": "review", "reviewer": "pharm2", "decision": "approve", "time": 20},
+        {"type": "release", "output": "Increase dose to 20 mg", "rule_revision": "v1",
+         "obs_revision": "o1", "time": 30, "action": 5}
+      ]
+    },
+    {
+      "name": "one_reviewer_two_roles_k2",
+      "expected": {"permit": false, "reason": "too_few_distinct_reviewers"},
+      "reviewers": {"rev1": ["general", "pharmacist"]},
+      "contract": {"output": "Note", "rule_revision": "v1", "obs_revision": "o1",
+                   "required_roles": ["general", "pharmacist"], "min_reviewers": 2, "floor": 5,
+                   "window_start": 0, "deadline": 100},
+      "events": [
+        {"type": "review", "reviewer": "rev1", "decision": "approve", "time": 10},
+        {"type": "review", "reviewer": "rev1", "decision": "approve", "time": 11},
+        {"type": "release", "output": "Note", "rule_revision": "v1",
+         "obs_revision": "o1", "time": 30, "action": 5}
+      ]
+    },
+    {
+      "name": "release_exactly_at_deadline",
+      "expected": {"permit": true, "reason": null},
+      "reviewers": {"rev1": ["general"]},
+      "contract": {"output": "Note", "rule_revision": "v1", "obs_revision": "o1",
+                   "required_roles": ["general"], "min_reviewers": 1, "floor": 5,
+                   "window_start": 0, "deadline": 50},
+      "events": [
+        {"type": "review", "reviewer": "rev1", "decision": "approve", "time": 50},
+        {"type": "release", "output": "Note", "rule_revision": "v1",
+         "obs_revision": "o1", "time": 50, "action": 5}
+      ]
+    },
+    {
+      "name": "role_granted_after_review",
+      "expected": {"permit": false, "reason": "missing_role_coverage"},
+      "reviewers": {"rev1": ["nurse"]},
+      "contract": {"output": "Note", "rule_revision": "v1", "obs_revision": "o1",
+                   "required_roles": ["pharmacist"], "min_reviewers": 1, "floor": 5,
+                   "window_start": 0, "deadline": 100},
+      "events": [
+        {"type": "review", "reviewer": "rev1", "decision": "approve", "time": 10},
+        {"type": "register_reviewer", "reviewer": "rev1", "roles": ["pharmacist"]},
+        {"type": "release", "output": "Note", "rule_revision": "v1",
+         "obs_revision": "o1", "time": 30, "action": 5}
+      ]
+    }
+  ]
+}
