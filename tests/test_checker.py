@@ -1,6 +1,6 @@
-from halo import checker
-from halo.gate_eval import table2
-from halo.scenarios import SCENARIOS, run_on_gate
+from halo.verification import checker
+from halo.experiments.gate_eval import table2
+from halo.verification.scenarios import SCENARIOS, run_on_gate
 
 
 def test_checker_agrees_with_gate_on_every_scenario():

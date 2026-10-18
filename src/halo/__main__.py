@@ -14,8 +14,9 @@ import os
 import sys
 import time
 
-from . import allocation, gate_eval, intake, report
-from .randomized_tests import N_SEQUENCES
+from .experiments import allocation, gate_eval, report
+from .verification import intake
+from .verification.randomized import N_SEQUENCES
 
 
 class Tee:
@@ -61,7 +62,7 @@ def run_allocation(out, out_dir):
 
 
 def run_robustness(out, out_dir, workers):
-    from . import robustness
+    from .experiments import robustness
     res = robustness.run(workers=workers, progress=lambda s: print(s, flush=True))
     out(robustness.format_report(res))
     if out_dir:
@@ -69,7 +70,7 @@ def run_robustness(out, out_dir, workers):
 
 
 def run_bench(out, n=20000):
-    from .bench import release_latency
+    from .experiments.bench import release_latency
     r = release_latency(n)
     out(report.header("Adapter release latency (deterministic stub agent)"))
     out(f"Median {r['median_us']:.1f} µs, 95th percentile {r['p95_us']:.1f} µs over {n:,} releases")

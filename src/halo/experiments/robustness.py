@@ -26,11 +26,11 @@ from typing import Dict, List, Optional
 import numpy as np
 
 from . import allocation as A
-from .policies import (
+from ..simulation.policies import (
     TUNING_CONFIGS, CapacityAwareThreshold, ConfidenceThreshold, LinearQLearner,
     StaticGates, TwoThreshold,
 )
-from .simulator import run_simulation
+from ..simulation.simulator import run_simulation
 
 FRESH_SEEDS = list(range(1000, 1050))
 Q_SEEDS = [0, 1, 2, 3, 4]
@@ -272,9 +272,9 @@ def write_csvs(out_dir: str, res: Dict) -> None:
                          "policy": labels[key], "params": s["params"], "cost": _mean(r, "cost"),
                          "harm": _mean(r, "harm"), "effort": _mean(r, "effort"),
                          "withheld": _mean(r, "withheld")})
-    write_csv(os.path.join(out_dir, "robustness_policies.csv"), rows, list(rows[0].keys()))
+    write_csv(os.path.join(out_dir, "robustness", "policies.csv"), rows, list(rows[0].keys()))
     rows = []
     for condition, c in res["conditions"].items():
         for r in c["comparisons"]:
             rows.append(dict(condition=condition, **r))
-    write_csv(os.path.join(out_dir, "robustness_comparisons.csv"), rows, list(rows[0].keys()))
+    write_csv(os.path.join(out_dir, "robustness", "comparisons.csv"), rows, list(rows[0].keys()))

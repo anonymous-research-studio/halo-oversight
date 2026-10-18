@@ -1,4 +1,4 @@
-from halo.allocation import POLICIES, breakeven_effort_weight, decision_rule
+from halo.experiments.allocation import POLICIES, breakeven_effort_weight, decision_rule
 
 
 def _rows(costs_by_key):

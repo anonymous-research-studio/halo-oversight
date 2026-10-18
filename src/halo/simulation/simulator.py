@@ -14,7 +14,7 @@ from typing import Optional, Tuple
 
 import numpy as np
 
-from .gate import Contract, ReleaseGate, output_hash
+from ..gate import Contract, ReleaseGate, output_hash
 from .policies import BasePolicy
 
 

@@ -1,4 +1,4 @@
-from halo import robustness
+from halo.experiments import robustness
 
 
 def test_paired_statistics():

@@ -12,7 +12,7 @@ Every release attempt is compared in both directions with the oracle.
 
 import numpy as np
 
-from .gate import Contract, ReleaseGate, output_hash
+from ..gate import Contract, ReleaseGate, output_hash
 from .oracle import Oracle, OracleContract
 
 

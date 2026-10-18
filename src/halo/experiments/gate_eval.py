@@ -5,10 +5,10 @@ the randomized suite against the oracle, and mutation testing.
 
 from typing import Dict, List
 
-from . import checker
-from .mutants import MUTANTS
-from .randomized_tests import N_SEQUENCES, run_mutant_detection, run_randomized_suite
-from .scenarios import SCENARIOS, run_on_gate, scenario_cases
+from ..verification import checker
+from ..verification.mutants import MUTANTS
+from ..verification.randomized import N_SEQUENCES, run_mutant_detection, run_randomized_suite
+from ..verification.scenarios import SCENARIOS, run_on_gate, scenario_cases
 
 
 def table2() -> List[Dict]:

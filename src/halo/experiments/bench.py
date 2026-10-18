@@ -4,7 +4,7 @@ import platform
 import statistics
 import time
 
-from .adapter import AgentAdapter
+from ..adapter import AgentAdapter
 
 
 def stub_agent(prompt: str) -> str:

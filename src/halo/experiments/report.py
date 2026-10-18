@@ -115,6 +115,7 @@ def format_decision(decision: List[Dict], title: str) -> str:
 
 
 def write_csv(path: str, rows: List[Dict], fields: List[str]) -> None:
+    os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", newline="", encoding="utf-8") as f:
         w = csv.DictWriter(f, fieldnames=fields, extrasaction="ignore")
         w.writeheader()
@@ -123,9 +124,9 @@ def write_csv(path: str, rows: List[Dict], fields: List[str]) -> None:
 
 
 def write_gate_csvs(out_dir: str, t2: List[Dict], rand: Dict, mut: Dict) -> None:
-    write_csv(os.path.join(out_dir, "table2_conformance.csv"), t2, list(t2[0].keys()))
-    write_csv(os.path.join(out_dir, "randomized.csv"), [rand], list(rand.keys()))
-    write_csv(os.path.join(out_dir, "mutation.csv"), mut["rows"], list(mut["rows"][0].keys()))
+    write_csv(os.path.join(out_dir, "gate", "table2_conformance.csv"), t2, list(t2[0].keys()))
+    write_csv(os.path.join(out_dir, "gate", "randomized.csv"), [rand], list(rand.keys()))
+    write_csv(os.path.join(out_dir, "gate", "mutation.csv"), mut["rows"], list(mut["rows"][0].keys()))
 
 
 def write_allocation_csvs(out_dir: str, alloc: Dict) -> None:
@@ -138,7 +139,7 @@ def write_allocation_csvs(out_dir: str, alloc: Dict) -> None:
             row.update({f"obligated_pct_level_{lvl}": v for lvl, v in r["obligated_pct_level"].items()})
             row.update({f"cost_seed_{i}": c for i, c in enumerate(r["per_seed_cost"])})
             rows.append(row)
-    write_csv(os.path.join(out_dir, "table3_policies.csv"), rows, list(rows[0].keys()))
+    write_csv(os.path.join(out_dir, "allocation", "table3_policies.csv"), rows, list(rows[0].keys()))
 
     rows = []
     for key, r in alloc["table4"].items():
@@ -146,7 +147,7 @@ def write_allocation_csvs(out_dir: str, alloc: Dict) -> None:
         row.update({f"harm_cov_{c}": h for c, h in r["harm_by_coverage"].items()})
         row["unencoded_released_pct"] = r["unencoded_released_pct"]
         rows.append(row)
-    write_csv(os.path.join(out_dir, "table4_coverage.csv"), rows, list(rows[0].keys()))
+    write_csv(os.path.join(out_dir, "allocation", "table4_coverage.csv"), rows, list(rows[0].keys()))
 
     rows = []
     for t in alloc["tuning"]:
@@ -154,7 +155,7 @@ def write_allocation_csvs(out_dir: str, alloc: Dict) -> None:
             rows.append({"policy": labels[t["policy"]], "params": c["params"],
                          "validation_cost": c["validation_cost"],
                          "chosen": c["params"] == t["chosen"]})
-    write_csv(os.path.join(out_dir, "tuning.csv"), rows,
+    write_csv(os.path.join(out_dir, "allocation", "tuning.csv"), rows,
               ["policy", "params", "validation_cost", "chosen"])
 
     rows = []
@@ -165,4 +166,4 @@ def write_allocation_csvs(out_dir: str, alloc: Dict) -> None:
             row.update({k: v for k, v in d.items() if k != "per_seed_diff"})
             row["per_seed_diff"] = " ".join(f"{x:.2f}" for x in d["per_seed_diff"])
             rows.append(row)
-    write_csv(os.path.join(out_dir, "decision_rule.csv"), rows, list(rows[0].keys()))
+    write_csv(os.path.join(out_dir, "allocation", "decision_rule.csv"), rows, list(rows[0].keys()))

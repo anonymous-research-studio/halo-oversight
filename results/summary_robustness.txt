@@ -71,4 +71,4 @@ HALO evaluation suite
   (as in the protocol); 'proposed' = credited with its own proposal.
 
 
-Completed in 225 s
+Completed in 235 s

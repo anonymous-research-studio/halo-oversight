@@ -23,11 +23,11 @@ from typing import Dict, List, Optional
 
 import numpy as np
 
-from .policies import (
+from ..simulation.policies import (
     TUNING_CONFIGS, CapacityAwareThreshold, ConfidenceThreshold, LinearQLearner,
     LinUCBBandit, MinObligation, RiskMatrix, StaticGates, TwoThreshold,
 )
-from .simulator import SimConfig, SimResults, run_simulation
+from ..simulation.simulator import SimConfig, SimResults, run_simulation
 
 VALIDATION_SEEDS = [100, 101, 102]
 TRAIN_SEEDS = [200, 201, 202]

@@ -6,7 +6,7 @@ so 14 are live.
 
 from typing import Dict, FrozenSet, List, Optional, Set, Tuple
 
-from .gate import (
+from ..gate import (
     CaseRecord, Contract, HoldReason, Receipt, ReleaseGate, output_hash,
 )
 

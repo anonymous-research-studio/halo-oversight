@@ -2,14 +2,14 @@
 Intake for externally generated scenario files (Section 2.4).
 
 A scenario file is JSON: either a list of scenarios or {"scenarios": [...]},
-each in the schema documented in halo/scenarios.py. The "expected" field is
+each in the schema documented in halo/verification/scenarios.py. The "expected" field is
 optional; generated scenarios usually arrive without one.
 
 Each scenario is run through the gate, the oracle and the static checker.
 The intake only reports: it never changes rules, contracts or the gate.
 Generation, adjudication and testing stay separate.
 
-    python -m halo intake path/to/scenarios.json [more.json ...]
+    halo intake path/to/scenarios.json [more.json ...]
 """
 
 import json

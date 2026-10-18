@@ -5,18 +5,29 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "halo-oversight"
 version = "1.1.0"
-description = "Obligation-preserving release gate and oversight-allocation simulator (HALO)"
+description = "Release gate and oversight-allocation study for verifying human oversight in compound AI systems"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.9"
 dependencies = ["numpy>=1.21"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
 
 [project.optional-dependencies]
 test = ["pytest>=7"]
 
-[tool.setuptools]
-packages = ["halo"]
+[project.scripts]
+halo = "halo.__main__:main"
+
+[project.urls]
+Repository = "https://github.com/anonymous-research-studio/halo-oversight"
+
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-pythonpath = ["."]
+pythonpath = ["src"]

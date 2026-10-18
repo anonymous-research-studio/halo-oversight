@@ -1,8 +1,8 @@
 import numpy as np
 
-from halo.allocation import POLICIES, build, config
-from halo.policies import LinearQLearner, LinUCBBandit, MinObligation, StaticGates
-from halo.simulator import (
+from halo.experiments.allocation import POLICIES, build, config
+from halo.simulation.policies import LinearQLearner, LinUCBBandit, MinObligation, StaticGates
+from halo.simulation.simulator import (
     RULE_HAZARD_COVERAGE, UNENCODED_HAZARDS, SimConfig, generate_workload, run_simulation,
 )
 

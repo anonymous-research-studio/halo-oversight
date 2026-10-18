@@ -152,4 +152,4 @@ Gate holds on simulated releases (should be 0): 0
 Median 1.4 µs, 95th percentile 1.5 µs over 20,000 releases
 Platform: CPython 3.13.7, arm64
 
-Completed in 120 s
+Completed in 121 s

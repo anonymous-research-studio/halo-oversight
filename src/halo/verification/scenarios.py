@@ -34,7 +34,7 @@ Labels change no mechanism; they are namespace prefixes for case IDs.
 
 from typing import Dict, List, Optional, Tuple
 
-from .gate import Contract, ReleaseGate, output_hash
+from ..gate import Contract, ReleaseGate, output_hash
 
 
 LABELS = ["clinical", "parenting", "eldercare", "mental_health"]

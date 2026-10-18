@@ -1,5 +1,5 @@
-from halo import gate_eval
-from halo.randomized_tests import run_randomized_suite
+from halo.experiments import gate_eval
+from halo.verification.randomized import run_randomized_suite
 
 
 def test_gate_agrees_with_oracle():

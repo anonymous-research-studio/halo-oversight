@@ -1,6 +1,6 @@
 import os
 
-from halo import intake
+from halo.verification import intake
 from halo.adapter import AgentAdapter
 from halo.gate import HoldReason
 

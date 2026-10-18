@@ -1,5 +1,5 @@
 from halo.gate import Contract, HoldReason, ReleaseGate, output_hash
-from halo.scenarios import SCENARIOS, run_all_scenarios
+from halo.verification.scenarios import SCENARIOS, run_all_scenarios
 
 
 def _two_role_gate(k):
