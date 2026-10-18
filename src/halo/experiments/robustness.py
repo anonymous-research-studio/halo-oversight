@@ -36,11 +36,11 @@ FRESH_SEEDS = list(range(1000, 1050))
 Q_SEEDS = [0, 1, 2, 3, 4]
 
 STRONGEST_BASELINE_GRIDS = {
-    "static_gates": [{"threshold": round(t, 2)} for t in np.arange(0.4, 1.41, 0.05)],
-    "conf_threshold": [{"threshold": round(t, 2)} for t in np.arange(0.2, 0.96, 0.05)],
-    "cap_aware": [{"base_threshold": round(b, 2), "queue_sensitivity": q}
+    "static_gates": [{"threshold": round(float(t), 2)} for t in np.arange(0.4, 1.41, 0.05)],
+    "conf_threshold": [{"threshold": round(float(t), 2)} for t in np.arange(0.2, 0.96, 0.05)],
+    "cap_aware": [{"base_threshold": round(float(b), 2), "queue_sensitivity": q}
                   for b in np.arange(0.4, 0.96, 0.05) for q in (0.0, 0.01, 0.03, 0.05)],
-    "two_threshold": [{"monitor_threshold": round(m, 2), "approval_threshold": round(a, 2)}
+    "two_threshold": [{"monitor_threshold": round(float(m), 2), "approval_threshold": round(float(a), 2)}
                       for m in np.arange(0.5, 0.91, 0.1)
                       for a in np.arange(0.2, 0.61, 0.1) if a < m - 1e-9],
 }
